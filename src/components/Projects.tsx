@@ -24,8 +24,8 @@ const Projects = () => {
       category: 'Fullstack',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MongoDB'],
       image: ecommerceImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/SurasetttyBadrinath/ecommerce-platform',
+      liveUrl: '/projects/ecommerce',
       featured: true
     },
     {
@@ -34,8 +34,8 @@ const Projects = () => {
       category: 'Frontend',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Chart.js'],
       image: dashboardImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      githubUrl: 'https://github.com/SurasetttyBadrinath/social-dashboard',
+      liveUrl: '/projects/dashboard'
     },
     {
       title: 'Task Management API',
@@ -43,8 +43,8 @@ const Projects = () => {
       category: 'Backend',
       technologies: ['Node.js', 'Express', 'MySQL', 'JWT', 'REST API'],
       image: apiImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      githubUrl: 'https://github.com/SurasetttyBadrinath/task-management-api',
+      liveUrl: '/projects/task-api'
     },
     {
       title: 'Learning Management System',
@@ -52,8 +52,8 @@ const Projects = () => {
       category: 'Fullstack',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MongoDB'],
       image: lmsImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      githubUrl: 'https://github.com/SurasetttyBadrinath/learning-management-system',
+      liveUrl: '/projects/lms'
     },
     {
       title: 'Weather App',
@@ -61,8 +61,8 @@ const Projects = () => {
       category: 'Frontend',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'API Integration'],
       image: weatherImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      githubUrl: 'https://github.com/SurasetttyBadrinath/weather-app',
+      liveUrl: '/projects/weather'
     },
     {
       title: 'Chat Application API',
@@ -70,8 +70,8 @@ const Projects = () => {
       category: 'Backend',
       technologies: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'REST API'],
       image: chatImage,
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      githubUrl: 'https://github.com/SurasetttyBadrinath/chat-api',
+      liveUrl: '/projects/chat-api'
     }
   ];
 
