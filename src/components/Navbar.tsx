@@ -25,12 +25,11 @@ const Navbar = () => {
   };
 
   const handleResumeDownload = () => {
-    // Create a dummy resume download
-    const link = document.createElement('a');
-    link.href = '#'; // Replace with actual resume URL
-    link.download = 'SURASETTY_BADRINATH_Resume.pdf';
-    link.click();
-  };
+  const link = document.createElement('a');
+  link.href = 'https://drive.google.com/uc?export=download&id=1U9ZiZ3G5G3qtoqN9E5g2td5Iz8DmfuPX';
+  link.download = 'SURASETTY_BADRINATH_Resume.pdf';
+  link.click();
+};
 
   const navItems = [
     { label: 'Home', id: 'home' },
