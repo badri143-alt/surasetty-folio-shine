@@ -41,14 +41,14 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       label: 'Email',
-      value: 'badrinath@example.com',
-      href: 'mailto:badrinath@example.com'
+      value: 'surasettybadrinath@gmail.com',
+      href: 'mailto:surasettybadrinath@gmail.com'
     },
     {
       icon: <Phone className="h-6 w-6" />,
       label: 'Phone',
-      value: '+91 756960026',
-      href: 'tel:+91756960026'
+      value: '+91 7569600264',
+      href: 'tel:+917569600264'
     },
     {
       icon: <MapPin className="h-6 w-6" />,

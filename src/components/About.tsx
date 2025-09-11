@@ -6,25 +6,25 @@ const About = () => {
     {
       category: 'Frontend',
       icon: <Globe className="h-8 w-8" />,
-      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue.js'],
+      technologies: ['HTML5', 'CSS3', 'Bootstrap', 'JavaScript', 'Responsive Web Design', 'CSS Flexbox'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
       category: 'Backend',
       icon: <Database className="h-8 w-8" />,
-      technologies: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB'],
+      technologies: ['Node.js', 'Express', 'Python', 'REST APIs', 'API Integrations'],
       color: 'from-green-500 to-emerald-500'
     },
     {
-      category: 'Mobile',
-      icon: <Smartphone className="h-8 w-8" />,
-      technologies: ['React Native', 'Flutter', 'iOS', 'Android'],
+      category: 'Database',
+      icon: <Database className="h-8 w-8" />,
+      technologies: ['MySQL', 'MongoDB'],
       color: 'from-purple-500 to-pink-500'
     },
     {
-      category: 'Tools & Others',
+      category: 'Tools & Concepts',
       icon: <Code className="h-8 w-8" />,
-      technologies: ['Git', 'Docker', 'AWS', 'Firebase', 'GraphQL'],
+      technologies: ['Git', 'GitHub', 'Windows', 'Linux', 'AWS', 'Power BI', 'OOPs', 'DSA (Basics)'],
       color: 'from-orange-500 to-red-500'
     }
   ];
@@ -39,7 +39,7 @@ const About = () => {
               About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm a passionate fullstack developer with experience in building modern web applications
+              Fresh Computer Science graduate with strong foundation in fullstack development
             </p>
           </div>
 
@@ -51,13 +51,13 @@ const About = () => {
                   Crafting Digital Experiences
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  With several years of experience in fullstack development, I specialize in creating 
-                  robust, scalable, and user-friendly applications. My passion lies in solving complex 
-                  problems and turning ideas into reality through clean, efficient code.
+                  As a fresh Computer Science graduate, I have built a strong foundation in fullstack development 
+                  through academic projects and self-learning. I'm passionate about creating user-friendly applications 
+                  and solving problems through clean, efficient code.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  I believe in continuous learning and staying updated with the latest technologies 
-                  to deliver cutting-edge solutions that make a real impact.
+                  I'm eager to apply my knowledge in a professional environment and contribute to meaningful projects 
+                  while continuing to learn and grow as a developer.
                 </p>
               </div>
 
@@ -66,19 +66,19 @@ const About = () => {
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>Frontend Development with React, Next.js, and modern frameworks</span>
+                    <span>Frontend Development with HTML5, CSS3, JavaScript, and Bootstrap</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>Backend Development with Node.js, Python, and databases</span>
+                    <span>Backend Development with Node.js, Express, and Python</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>Mobile App Development with React Native and Flutter</span>
+                    <span>Database Management with MySQL and MongoDB</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span>Cloud Deployment and DevOps with AWS and Docker</span>
+                    <span>API Development and Integration with REST APIs</span>
                   </li>
                 </ul>
               </div>

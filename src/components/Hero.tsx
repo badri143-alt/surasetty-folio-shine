@@ -25,8 +25,12 @@ const Hero = () => {
           {/* Profile Image */}
           <div className="mb-8">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1 shadow-glow">
-              <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary">SB</span>
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img 
+                  src="/lovable-uploads/0f5847bb-11a7-4817-b34f-2f33e31922c5.png" 
+                  alt="Surasetty Badrinath - Fullstack Developer"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -43,8 +47,8 @@ const Hero = () => {
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Passionate about creating innovative web solutions with modern technologies. 
-              Specialized in building scalable applications from concept to deployment.
+              Fresh Computer Science graduate passionate about creating innovative web solutions. 
+              Eager to start my career in fullstack development and contribute to meaningful projects.
             </p>
 
             {/* CTA Buttons */}
@@ -86,7 +90,7 @@ const Hero = () => {
                 <Linkedin className="h-6 w-6 text-foreground" />
               </a>
               <a
-                href="mailto:badrinath@example.com"
+                href="mailto:surasettybadrinath@gmail.com"
                 className="p-3 rounded-full bg-background/50 hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:shadow-glow"
               >
                 <Mail className="h-6 w-6 text-foreground" />
