@@ -4,6 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 import { 
   TrendingUp, 
   Users, 
@@ -13,11 +19,23 @@ import {
   Eye,
   BarChart3,
   Calendar,
-  Clock
+  Clock,
+  Plus,
+  Trash2,
+  Edit
 } from 'lucide-react';
 
 const DashboardPage = () => {
   const [selectedPlatform, setSelectedPlatform] = useState('overview');
+  const [isScheduleDialogOpen, setIsScheduleDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [editingPost, setEditingPost] = useState<any>(null);
+  const [newPost, setNewPost] = useState({
+    platform: '',
+    content: '',
+    scheduledTime: ''
+  });
+  const { toast } = useToast();
 
   const stats = {
     overview: {
@@ -82,7 +100,7 @@ const DashboardPage = () => {
     }
   ];
 
-  const upcomingPosts = [
+  const initialUpcomingPosts = [
     {
       id: 1,
       platform: 'Instagram',
@@ -98,6 +116,82 @@ const DashboardPage = () => {
       status: 'draft'
     }
   ];
+
+  const [upcomingPostsList, setUpcomingPostsList] = useState(initialUpcomingPosts);
+
+  const handleSchedulePost = () => {
+    if (!newPost.platform || !newPost.content || !newPost.scheduledTime) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const post = {
+      id: Date.now(),
+      platform: newPost.platform,
+      content: newPost.content,
+      scheduledTime: newPost.scheduledTime,
+      status: 'scheduled'
+    };
+
+    setUpcomingPostsList(prev => [...prev, post]);
+    setNewPost({ platform: '', content: '', scheduledTime: '' });
+    setIsScheduleDialogOpen(false);
+    
+    toast({
+      title: "Success",
+      description: "Post scheduled successfully!",
+    });
+  };
+
+  const handleEditPost = (post: any) => {
+    setEditingPost(post);
+    setNewPost({
+      platform: post.platform,
+      content: post.content,
+      scheduledTime: post.scheduledTime
+    });
+    setIsEditDialogOpen(true);
+  };
+
+  const handleUpdatePost = () => {
+    if (!newPost.platform || !newPost.content || !newPost.scheduledTime) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setUpcomingPostsList(prev => 
+      prev.map(post => 
+        post.id === editingPost.id 
+          ? { ...post, platform: newPost.platform, content: newPost.content, scheduledTime: newPost.scheduledTime }
+          : post
+      )
+    );
+
+    setNewPost({ platform: '', content: '', scheduledTime: '' });
+    setEditingPost(null);
+    setIsEditDialogOpen(false);
+    
+    toast({
+      title: "Success",
+      description: "Post updated successfully!",
+    });
+  };
+
+  const handleDeletePost = (postId: number) => {
+    setUpcomingPostsList(prev => prev.filter(post => post.id !== postId));
+    toast({
+      title: "Success",
+      description: "Post deleted successfully!",
+    });
+  };
 
   const currentStats = stats[selectedPlatform as keyof typeof stats];
 
@@ -255,8 +349,8 @@ const DashboardPage = () => {
                   <CardDescription>Manage your scheduled and draft content</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    {upcomingPosts.map((post) => (
+                <div className="space-y-4">
+                  {upcomingPostsList.map((post) => (
                       <div key={post.id} className="border border-border/20 rounded-lg p-4 space-y-3">
                         <div className="flex items-center justify-between">
                           <Badge variant="outline">{post.platform}</Badge>
@@ -271,16 +365,134 @@ const DashboardPage = () => {
                             {post.scheduledTime}
                           </span>
                           <div className="space-x-2">
-                            <Button size="sm" variant="outline">Edit</Button>
-                            <Button size="sm" variant="outline">Delete</Button>
+                            <Button size="sm" variant="outline" onClick={() => handleEditPost(post)}>
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={() => handleDeletePost(post.id)}>
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
                           </div>
                         </div>
                       </div>
-                    ))}
-                    <Button className="w-full" variant="outline">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Schedule New Post
-                    </Button>
+                  ))}
+                  
+                  <Dialog open={isScheduleDialogOpen} onOpenChange={setIsScheduleDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button className="w-full" variant="outline">
+                        <Plus className="h-4 w-4 mr-2" />
+                        Schedule New Post
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Schedule New Post</DialogTitle>
+                        <DialogDescription>
+                          Create and schedule a new social media post.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="platform" className="text-right">
+                            Platform
+                          </Label>
+                          <Select value={newPost.platform} onValueChange={(value) => setNewPost(prev => ({ ...prev, platform: value }))}>
+                            <SelectTrigger className="col-span-3">
+                              <SelectValue placeholder="Select platform" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="Instagram">Instagram</SelectItem>
+                              <SelectItem value="Twitter">Twitter</SelectItem>
+                              <SelectItem value="Facebook">Facebook</SelectItem>
+                              <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="content" className="text-right">
+                            Content
+                          </Label>
+                          <Textarea
+                            id="content"
+                            value={newPost.content}
+                            onChange={(e) => setNewPost(prev => ({ ...prev, content: e.target.value }))}
+                            placeholder="Write your post content..."
+                            className="col-span-3"
+                          />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="time" className="text-right">
+                            Schedule
+                          </Label>
+                          <Input
+                            id="time"
+                            type="datetime-local"
+                            value={newPost.scheduledTime}
+                            onChange={(e) => setNewPost(prev => ({ ...prev, scheduledTime: e.target.value }))}
+                            className="col-span-3"
+                          />
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button onClick={handleSchedulePost}>Schedule Post</Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Edit Post</DialogTitle>
+                        <DialogDescription>
+                          Make changes to your scheduled post.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="edit-platform" className="text-right">
+                            Platform
+                          </Label>
+                          <Select value={newPost.platform} onValueChange={(value) => setNewPost(prev => ({ ...prev, platform: value }))}>
+                            <SelectTrigger className="col-span-3">
+                              <SelectValue placeholder="Select platform" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="Instagram">Instagram</SelectItem>
+                              <SelectItem value="Twitter">Twitter</SelectItem>
+                              <SelectItem value="Facebook">Facebook</SelectItem>
+                              <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="edit-content" className="text-right">
+                            Content
+                          </Label>
+                          <Textarea
+                            id="edit-content"
+                            value={newPost.content}
+                            onChange={(e) => setNewPost(prev => ({ ...prev, content: e.target.value }))}
+                            placeholder="Write your post content..."
+                            className="col-span-3"
+                          />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="edit-time" className="text-right">
+                            Schedule
+                          </Label>
+                          <Input
+                            id="edit-time"
+                            type="datetime-local"
+                            value={newPost.scheduledTime}
+                            onChange={(e) => setNewPost(prev => ({ ...prev, scheduledTime: e.target.value }))}
+                            className="col-span-3"
+                          />
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button onClick={handleUpdatePost}>Update Post</Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
                   </div>
                 </CardContent>
               </Card>

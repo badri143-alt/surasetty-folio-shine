@@ -79,27 +79,99 @@ const WeatherPage = () => {
 
   const handleSearch = () => {
     if (searchCity.trim()) {
-      // Simulate API call with mock data
-      const cities = [
-        { name: 'London', country: 'UK', temp: 15, condition: 'Rainy' },
-        { name: 'Tokyo', country: 'Japan', temp: 28, condition: 'Sunny' },
-        { name: 'Paris', country: 'France', temp: 20, condition: 'Cloudy' },
-        { name: 'Sydney', country: 'Australia', temp: 25, condition: 'Partly Cloudy' }
-      ];
+      // Simulate API call with comprehensive city database
+      const cityDatabase: Record<string, { country: string, temp: number, condition: string }> = {
+        // Major cities worldwide
+        'london': { country: 'UK', temp: 15, condition: 'Rainy' },
+        'tokyo': { country: 'Japan', temp: 28, condition: 'Sunny' },
+        'paris': { country: 'France', temp: 20, condition: 'Cloudy' },
+        'sydney': { country: 'Australia', temp: 25, condition: 'Partly Cloudy' },
+        'new york': { country: 'USA', temp: 22, condition: 'Partly Cloudy' },
+        'mumbai': { country: 'India', temp: 32, condition: 'Sunny' },
+        'delhi': { country: 'India', temp: 30, condition: 'Sunny' },
+        'bangalore': { country: 'India', temp: 26, condition: 'Cloudy' },
+        'hyderabad': { country: 'India', temp: 29, condition: 'Partly Cloudy' },
+        'chennai': { country: 'India', temp: 33, condition: 'Sunny' },
+        'kolkata': { country: 'India', temp: 31, condition: 'Cloudy' },
+        'pune': { country: 'India', temp: 27, condition: 'Partly Cloudy' },
+        'ahmedabad': { country: 'India', temp: 34, condition: 'Sunny' },
+        'jaipur': { country: 'India', temp: 28, condition: 'Sunny' },
+        'surat': { country: 'India', temp: 32, condition: 'Partly Cloudy' },
+        'beijing': { country: 'China', temp: 18, condition: 'Cloudy' },
+        'shanghai': { country: 'China', temp: 23, condition: 'Partly Cloudy' },
+        'los angeles': { country: 'USA', temp: 24, condition: 'Sunny' },
+        'chicago': { country: 'USA', temp: 16, condition: 'Cloudy' },
+        'houston': { country: 'USA', temp: 26, condition: 'Partly Cloudy' },
+        'miami': { country: 'USA', temp: 28, condition: 'Sunny' },
+        'toronto': { country: 'Canada', temp: 14, condition: 'Rainy' },
+        'vancouver': { country: 'Canada', temp: 17, condition: 'Cloudy' },
+        'berlin': { country: 'Germany', temp: 13, condition: 'Cloudy' },
+        'madrid': { country: 'Spain', temp: 21, condition: 'Sunny' },
+        'rome': { country: 'Italy', temp: 19, condition: 'Partly Cloudy' },
+        'amsterdam': { country: 'Netherlands', temp: 12, condition: 'Rainy' },
+        'moscow': { country: 'Russia', temp: 8, condition: 'Cloudy' },
+        'dubai': { country: 'UAE', temp: 38, condition: 'Sunny' },
+        'singapore': { country: 'Singapore', temp: 30, condition: 'Partly Cloudy' },
+        'hong kong': { country: 'Hong Kong', temp: 25, condition: 'Cloudy' },
+        'seoul': { country: 'South Korea', temp: 20, condition: 'Partly Cloudy' },
+        'bangkok': { country: 'Thailand', temp: 34, condition: 'Sunny' },
+        'kuala lumpur': { country: 'Malaysia', temp: 31, condition: 'Rainy' },
+        'jakarta': { country: 'Indonesia', temp: 29, condition: 'Rainy' },
+        'manila': { country: 'Philippines', temp: 32, condition: 'Partly Cloudy' },
+        'cairo': { country: 'Egypt', temp: 27, condition: 'Sunny' },
+        'cape town': { country: 'South Africa', temp: 18, condition: 'Partly Cloudy' },
+        'lagos': { country: 'Nigeria', temp: 31, condition: 'Rainy' },
+        'nairobi': { country: 'Kenya', temp: 22, condition: 'Partly Cloudy' },
+        'rio de janeiro': { country: 'Brazil', temp: 26, condition: 'Sunny' },
+        'sao paulo': { country: 'Brazil', temp: 21, condition: 'Cloudy' },
+        'buenos aires': { country: 'Argentina', temp: 17, condition: 'Partly Cloudy' },
+        'mexico city': { country: 'Mexico', temp: 19, condition: 'Cloudy' },
+        'istanbul': { country: 'Turkey', temp: 16, condition: 'Rainy' },
+        'athens': { country: 'Greece', temp: 23, condition: 'Sunny' },
+        'vienna': { country: 'Austria', temp: 14, condition: 'Cloudy' },
+        'zurich': { country: 'Switzerland', temp: 11, condition: 'Rainy' },
+        'stockholm': { country: 'Sweden', temp: 9, condition: 'Cloudy' },
+        'oslo': { country: 'Norway', temp: 7, condition: 'Rainy' },
+        'copenhagen': { country: 'Denmark', temp: 10, condition: 'Cloudy' },
+        'helsinki': { country: 'Finland', temp: 6, condition: 'Cloudy' }
+      };
       
-      const randomCity = cities[Math.floor(Math.random() * cities.length)];
-      setCurrentWeather({
-        city: randomCity.name,
-        country: randomCity.country,
-        temperature: randomCity.temp,
-        condition: randomCity.condition,
-        humidity: Math.floor(Math.random() * 40) + 40,
-        windSpeed: Math.floor(Math.random() * 20) + 5,
-        visibility: Math.floor(Math.random() * 5) + 8,
-        feelsLike: randomCity.temp + Math.floor(Math.random() * 6) - 3,
-        uvIndex: Math.floor(Math.random() * 10) + 1,
-        pressure: Math.floor(Math.random() * 50) + 1000
-      });
+      const searchKey = searchCity.trim().toLowerCase();
+      const cityData = cityDatabase[searchKey];
+      
+      if (cityData) {
+        // Found the city in our database
+        setCurrentWeather({
+          city: searchCity.trim().split(' ').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          ).join(' '),
+          country: cityData.country,
+          temperature: cityData.temp,
+          condition: cityData.condition,
+          humidity: Math.floor(Math.random() * 40) + 40,
+          windSpeed: Math.floor(Math.random() * 20) + 5,
+          visibility: Math.floor(Math.random() * 5) + 8,
+          feelsLike: cityData.temp + Math.floor(Math.random() * 6) - 3,
+          uvIndex: Math.floor(Math.random() * 10) + 1,
+          pressure: Math.floor(Math.random() * 50) + 1000
+        });
+        
+        // Update forecast for the searched city
+        const conditions = ['Sunny', 'Partly Cloudy', 'Cloudy', 'Rainy'];
+        const newForecast = [
+          { day: 'Today', high: cityData.temp + 2, low: cityData.temp - 4, condition: cityData.condition, precipitation: Math.floor(Math.random() * 30) },
+          { day: 'Tomorrow', high: cityData.temp + 3, low: cityData.temp - 3, condition: conditions[Math.floor(Math.random() * conditions.length)], precipitation: Math.floor(Math.random() * 40) },
+          { day: 'Wednesday', high: cityData.temp + 1, low: cityData.temp - 5, condition: conditions[Math.floor(Math.random() * conditions.length)], precipitation: Math.floor(Math.random() * 60) },
+          { day: 'Thursday', high: cityData.temp - 1, low: cityData.temp - 6, condition: conditions[Math.floor(Math.random() * conditions.length)], precipitation: Math.floor(Math.random() * 50) },
+          { day: 'Friday', high: cityData.temp + 2, low: cityData.temp - 4, condition: conditions[Math.floor(Math.random() * conditions.length)], precipitation: Math.floor(Math.random() * 30) }
+        ];
+        setForecast(newForecast);
+      } else {
+        // City not found in database
+        alert(`City "${searchCity}" not found. Try searching for major cities like New York, London, Tokyo, Mumbai, Delhi, etc.`);
+        return;
+      }
+      
       setSearchCity('');
     }
   };
