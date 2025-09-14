@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
+📊 Social Media Dashboard
 
-## Project info
+    A modern social media management dashboard built with React, TypeScript, and Tailwind CSS.
+    Easily manage multiple platforms, schedule posts, and track performance with real-time analytics.
 
-**URL**: https://lovable.dev/projects/bcac85d0-23e4-415c-b51f-2ee6a82cdee1
+🚀 Features
 
-## How can I edit this code?
+    Multi-Platform Support – Manage Instagram, Twitter, Facebook, and LinkedIn
 
-There are several ways of editing your application.
+    Real-Time Analytics – Track followers, engagement, impressions, and reach
 
-**Use Lovable**
+    Post Scheduling – Full CRUD support for scheduled posts
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bcac85d0-23e4-415c-b51f-2ee6a82cdee1) and start prompting.
+    Performance Tracking – Monitor metrics with trend indicators
 
-Changes made via Lovable will be committed automatically to this repo.
+    Interactive UI – Glassmorphism design with Dark/Light mode
 
-**Use your preferred IDE**
+    Toast Notifications – Instant feedback for actions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+    Frontend: React 18 + TypeScript
 
-Follow these steps:
+    Styling: Tailwind CSS + Custom Gradients
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+    UI Components: shadcn/ui, Radix UI primitives
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+    Icons: Lucide React
 
-# Step 3: Install the necessary dependencies.
-npm i
+    State Management: React Hooks
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+    Notifications: Custom Toast Hook
+
+📂 Project Structure
+    src/
+    ├── components/
+    │   └── ui/              # Reusable UI components
+    ├── hooks/
+    │   └── use-toast.ts     # Custom toast hook
+    ├── projects/
+    │   └── dashboard/
+    │       ├── DashboardPage.tsx   # Main dashboard component
+    │       └── README.md           # Project-specific docs
+    └── main.tsx             # App entry point
+
+⚡ Installation
+
+Clone the repository and install dependencies:
+
+# Clone the repo
+git clone <repository-url>
+
+# Navigate to project directory
+cd social-media-dashboard
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The app will be running on http://localhost:5173/
+ (default for Vite).
 
-**Use GitHub Codespaces**
+📖 Usage
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+    Dashboard Overview – View all platforms at a glance
 
-## What technologies are used for this project?
+    Platform Tabs – Switch between Instagram, Twitter, Facebook, LinkedIn
 
-This project is built with:
+    Schedule Posts – Add, edit, and delete scheduled posts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+    Analytics – Track engagement rates and post performance
 
-## How can I deploy this project?
+    Notifications – Get success/error messages instantly
 
-Simply open [Lovable](https://lovable.dev/projects/bcac85d0-23e4-415c-b51f-2ee6a82cdee1) and click on Share -> Publish.
+🔌 API Integration
 
-## Can I connect a custom domain to my Lovable project?
+    Currently using mock data. To connect real APIs:
 
-Yes, you can!
+    Replace mock stats with API calls
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+    Add OAuth authentication
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+    Implement live data fetching & error states
+
+    Connect with Meta, Twitter, LinkedIn APIs
+
+🤝 Contributing
+
+    Fork the repo
+
+    Create a feature branch (git checkout -b feature/awesome-feature)
+
+    Commit changes (git commit -m 'Add awesome feature')
+
+    Push to branch (git push origin feature/awesome-feature)
+
+    Create a Pull Request
