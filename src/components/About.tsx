@@ -51,9 +51,10 @@ const About = () => {
                   Crafting Digital Experiences
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  As a fresh Computer Science graduate, I have built a strong foundation in fullstack development 
-                  through academic projects and self-learning. I'm passionate about creating user-friendly applications 
-                  and solving problems through clean, efficient code.
+                  As a fresh Computer Science graduate from Santhiram Engineering College affiliated to JNTU, Anantapuramu 
+                  (B.Tech completed in 2025), I have built a strong foundation in fullstack development through academic 
+                  projects and self-learning. I'm passionate about creating user-friendly applications and solving problems 
+                  through clean, efficient code.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   I'm eager to apply my knowledge in a professional environment and contribute to meaningful projects 

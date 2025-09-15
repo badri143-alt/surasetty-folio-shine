@@ -13,9 +13,7 @@ import weatherImage from '@/assets/weather-project.jpg';
 import chatImage from '@/assets/chat-project.jpg';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
-
-  const filters = ['All', 'Frontend', 'Backend', 'Fullstack'];
+  // Removed filtering functionality - show all projects
 
   const projects = [
     {
@@ -75,9 +73,7 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  // Show all projects without filtering
 
   return (
     <section id="projects" className="py-20 relative">
@@ -93,27 +89,11 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {filters.map((filter) => (
-              <Button
-                key={filter}
-                variant={activeFilter === filter ? "default" : "outline"}
-                onClick={() => setActiveFilter(filter)}
-                className={`transition-all duration-300 ${
-                  activeFilter === filter 
-                    ? 'bg-gradient-primary shadow-glow' 
-                    : 'hover:border-primary/40 hover:bg-primary/5'
-                }`}
-              >
-                {filter}
-              </Button>
-            ))}
-          </div>
+          {/* Removed filter buttons - showing all projects */}
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <Card 
                 key={index} 
                 className={`bg-gradient-card border-border/20 hover:shadow-elegant transition-all duration-300 group ${
