@@ -5,71 +5,65 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
 
 // Import project images
-import ecommerceImage from '@/assets/ecommerce-project.jpg';
-import dashboardImage from '@/assets/dashboard-project.jpg';
-import apiImage from '@/assets/api-project.jpg';
-import lmsImage from '@/assets/lms-project.jpg';
-import weatherImage from '@/assets/weather-project.jpg';
-import chatImage from '@/assets/chat-project.jpg';
+import badriNxtmartImage from '@/assets/badri-nxtmart-project.jpg';
+import screenRecorderImage from '@/assets/screen-recorder-project.jpg';
+import batteryManagementImage from '@/assets/battery-management-project.jpg';
+import projectsDashboardImage from '@/assets/projects-dashboard-project.jpg';
+import badriWeatherImage from '@/assets/badri-weather-project.jpg';
+import taskManagerImage from '@/assets/task-manager-project.jpg';
 
 const Projects = () => {
   // Removed filtering functionality - show all projects
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Badri-nxtmart Platform',
       description: 'A full-featured e-commerce platform with payment integration, admin dashboard, and real-time inventory management.',
-      category: 'Fullstack',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MongoDB'],
-      image: ecommerceImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/ecommerce-platform',
-      liveUrl: '/projects/ecommerce',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'API Integration'],
+      image: badriNxtmartImage,
+      githubUrl: 'https://github.com/badri143-alt/e-commerce',
+      liveUrl: 'https://badrinxtmart.ccbp.tech/',
       featured: true
     },
     {
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media management with real-time data visualization and scheduling features.',
-      category: 'Frontend',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Chart.js'],
-      image: dashboardImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/social-dashboard',
-      liveUrl: '/projects/dashboard'
+      title: 'Screen Capture & Recorder using JavaScript APIs',
+      description: 'A lightweight JavaScript screen capture and recorder using MediaDevices and MediaRecorder APIs.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'MediaDevices API', 'MediaRecorder API'],
+      image: screenRecorderImage,
+      githubUrl: 'https://github.com/badri143-alt/Recorder',
+      liveUrl: 'https://recorder-green.vercel.app/'
     },
     {
-      title: 'Task Management API',
-      description: 'RESTful API for task management system with authentication, role-based access control, and real-time notifications.',
-      category: 'Backend',
-      technologies: ['Node.js', 'Express', 'MySQL', 'JWT', 'REST API'],
-      image: apiImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/task-management-api',
-      liveUrl: '/projects/task-api'
+      title: 'Battery Management Dashboard – Real-Time EV Data Monitor',
+      description: 'A responsive web interface to visualize and test battery performance data through RESTful APIs.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'REST API'],
+      image: batteryManagementImage,
+      githubUrl: 'https://github.com/badri143-alt/battery-management',
+      liveUrl: '#'
     },
     {
-      title: 'Learning Management System',
-      description: 'Complete LMS with course creation, student enrollment, progress tracking, and interactive quizzes.',
-      category: 'Fullstack',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MongoDB'],
-      image: lmsImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/learning-management-system',
-      liveUrl: '/projects/lms'
+      title: 'Projects Dashboard – Responsive & Dynamic Showcase',
+      description: 'A responsive projects dashboard to manage, display, and explore both static and dynamic projects in one place.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Responsive Design'],
+      image: projectsDashboardImage,
+      githubUrl: 'https://github.com/badri143-alt/projects',
+      liveUrl: 'https://badriprojects.ccbp.tech/'
     },
     {
       title: 'Weather App',
       description: 'Beautiful weather application with location-based forecasts, interactive maps, and weather alerts.',
-      category: 'Frontend',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'API Integration'],
-      image: weatherImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/weather-app',
-      liveUrl: '/projects/weather'
+      image: badriWeatherImage,
+      githubUrl: 'https://github.com/badri143-alt/weather-app',
+      liveUrl: 'https://badri-weather-app.vercel.app/'
     },
     {
-      title: 'Chat Application API',
-      description: 'Real-time chat application backend with rooms, file sharing, and message encryption.',
-      category: 'Backend',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'REST API'],
-      image: chatImage,
-      githubUrl: 'https://github.com/SurasetttyBadrinath/chat-api',
-      liveUrl: '/projects/chat-api'
+      title: 'Task Manager Application',
+      description: 'A comprehensive task management application with CRUD operations, task prioritization, and responsive design.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Local Storage'],
+      image: taskManagerImage,
+      githubUrl: 'https://github.com/badri143-alt/todoApp',
+      liveUrl: 'https://badri-todo-app.vercel.app/'
     }
   ];
 
@@ -102,11 +96,11 @@ const Projects = () => {
               >
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img 
-                      src={project.image} 
-                      alt={`${project.title} - ${project.category} project`}
-                      className="w-full h-48 object-cover"
-                    />
+                     <img 
+                       src={project.image} 
+                       alt={`${project.title} project`}
+                       className="w-full h-48 object-cover"
+                     />
                     <div className="absolute inset-0 bg-gradient-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="flex space-x-4">
                         <Button
@@ -156,23 +150,22 @@ const Projects = () => {
                       ))}
                     </div>
 
-                    <div className="flex justify-between items-center pt-4">
-                      <Badge variant="outline" className="border-primary/20 text-primary">
-                        {project.category}
-                      </Badge>
-                      <div className="flex space-x-2">
-                        <Button size="sm" variant="ghost" asChild>
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="h-4 w-4" />
-                          </a>
-                        </Button>
-                        <Button size="sm" variant="ghost" asChild>
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
+                     <div className="flex justify-end items-center pt-4">
+                       <div className="flex space-x-2">
+                         <Button size="sm" variant="ghost" asChild>
+                           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                             <Github className="h-4 w-4" />
+                           </a>
+                         </Button>
+                         {project.liveUrl !== '#' && (
+                           <Button size="sm" variant="ghost" asChild>
+                             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                               <ExternalLink className="h-4 w-4" />
+                             </a>
+                           </Button>
+                         )}
+                       </div>
+                     </div>
                   </div>
                 </CardContent>
               </Card>
